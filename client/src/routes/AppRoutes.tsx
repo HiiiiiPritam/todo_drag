@@ -11,6 +11,7 @@ import TeamDetail from "../pages/TeamDetails";
 import PrivateRoute from "../components/PrivateRoute";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import HomePage from "../pages/HomePage";
 
 // import Pages from "../pages/Pages";
 // import NotFound from "../pages/NotFound";
@@ -27,6 +28,7 @@ const AppRoutes = () => {
       <Route path="/teams/:teamId" element={<PrivateRoute><TeamDetail /></PrivateRoute>} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="*" element={<Login />} />
       
     </Routes>
