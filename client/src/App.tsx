@@ -3,6 +3,10 @@ import AppRoutes from "./routes/AppRoutes";
 import Layout from "./components/Layout";
 import AppLoader from "./features/global/Apploader";
 import type { User } from "./types/user";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import HomePage from "./pages/HomePage";
 
 // mock user & teams
 

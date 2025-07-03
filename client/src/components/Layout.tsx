@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import type { User } from "../types/user";
 import Header from "./Header";
 import Sidebar from "./SideBar";
@@ -12,7 +13,7 @@ interface LayoutProps {
   openCreateModal: (type: string) => void;
   currentUser: User;
 }
-
+const HIDE_LAYOUT_PATHS = ["/", "/login", "/register"];
 const Layout = ({
   children,
   activeView,
@@ -22,6 +23,12 @@ const Layout = ({
   teams,
   currentUser,
 }: LayoutProps) => {
+  const location = useLocation();
+  const hideLayout = HIDE_LAYOUT_PATHS.includes(location.pathname);
+
+  if (hideLayout) {
+    return <>{children}</>; // Just return the page directly (no sidebar/navbar)
+  }
   return (
     <div className="flex h-screen overflow-hidden">
       <Sidebar
