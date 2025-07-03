@@ -1,5 +1,3 @@
-// types.ts
-
 export type Status = 'todo' | 'inprogress' | 'done';
 export type Priority = 'urgent' | 'high' | 'medium' | 'low';
 
@@ -7,7 +5,7 @@ export interface Assignee {
   id: string;
   name: string;
   type: 'user' | 'team';
-  avatarUrl?: string; // optional for profile pics
+  avatarUrl?: string; 
 }
 
 export interface Task {

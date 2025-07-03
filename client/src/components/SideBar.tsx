@@ -29,7 +29,7 @@ const navItems = [
   { id: "tasks", label: "Tasks", icon: FolderOpen },
   { id: "timeline", label: "Timeline", icon: BarChart3 },
   { id: "analytics", label: "Analytics", icon: TrendingUp },
-  {id:"me", label: "Me", icon:User},
+  {id:"me", label: "Your Tasks", icon:User},
   {id:"teams", label: "Teams", icon:Globe},
 ];
 
@@ -46,7 +46,6 @@ const Sidebar = ({
 
   return (
     <>
-      {/* ✅ BACKDROP (Mobile Only) */}
       {isOpen && (
         <div
           className="fixed inset-0 z-30 bg-black/30 lg:hidden"
@@ -54,7 +53,6 @@ const Sidebar = ({
         />
       )}
 
-      {/* ✅ SIDEBAR CONTAINER */}
       <div
         className={clsx(
           "fixed z-40 top-0 left-0 h-full w-64 bg-white border-r border-gray-200 overflow-y-auto transform transition-transform duration-300 ease-in-out",
@@ -63,7 +61,6 @@ const Sidebar = ({
         )}
       >
         <div className="p-6">
-          {/* ❌ Mobile Close Button */}
           <div className="lg:hidden flex justify-end mb-4">
             <button
               onClick={() => dispatch(closeSidebar())}
@@ -73,7 +70,6 @@ const Sidebar = ({
             </button>
           </div>
 
-          {/* ✅ Logo */}
           <div className="flex items-center gap-3 mb-8">
             <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold">TF</span>
@@ -81,7 +77,6 @@ const Sidebar = ({
             <h1 className="text-xl font-bold text-gray-900">TeamFlow</h1>
           </div>
 
-          {/* ✅ Navigation */}
           <nav className="space-y-2">
             {navItems.map(({ id, label, icon: Icon }) => (
               <button

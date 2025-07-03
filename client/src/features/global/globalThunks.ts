@@ -1,10 +1,8 @@
-// src/features/global/globalThunks.ts
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../app/axios"; // your configured axios instance
+import api from "../../app/axios"; 
 import type { Team } from "../../types/team";
 import { setTasks, setUsers, setTeams } from "./globalSlice";
 
-// ✅ Create a new team
 export const createTeam = createAsyncThunk(
   "global/createTeam",
   async (payload: Partial<Team>, thunkAPI) => {
@@ -13,7 +11,6 @@ export const createTeam = createAsyncThunk(
   }
 );
 
-// ✅ Fetch all essential data
 export const fetchGlobalData = createAsyncThunk(
   "global/fetchGlobalData",
   async (_, thunkAPI) => {

@@ -79,11 +79,11 @@ const MePage = () => {
   );
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">My Tasks</h1>
+    <div className="p-6 ">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6 bg-gradient-to-br from-blue-50 via-white to-blue-100 ">My Tasks</h1>
 
       {/* Tabs */}
-      <div className="flex gap-4 border-b mb-6">
+      <div className="flex gap-4 border-b mb-6 ">
         <button
           onClick={() => setActiveTab("assignedToMe")}
           className={`py-2 px-4 border-b-2 text-sm font-medium ${
@@ -107,7 +107,7 @@ const MePage = () => {
       </div>
 
       {/* Task Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
         {activeTab === "assignedToMe" ? (
           assigneeMe.length > 0 ? (
             assigneeMe.map(renderTask)

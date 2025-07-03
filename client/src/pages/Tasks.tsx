@@ -218,8 +218,8 @@ export default function TasksPage() {
   };
 
   return (
-    <div className="p-6 space-y-4">
-      <div className="flex gap-4 items-center flex-wrap">
+    <div className="p-6 space-y-4 ">
+      <div className="flex gap-4 items-center flex-wrap bg-gradient-to-br from-blue-50 via-white to-blue-100">
         <input
           className="border rounded px-3 py-2 text-sm"
           placeholder="Search tasks..."

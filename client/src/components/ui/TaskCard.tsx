@@ -51,10 +51,9 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         </span>
       </div>
 
-      {/* Description */}
+      
       <p className="text-sm text-gray-700">{task.description}</p>
 
-      {/* Meta Info */}
       <div className="text-sm text-gray-600 space-y-1">
         <div className="flex items-center gap-2">
           <User className="w-4 h-4 text-gray-500" />

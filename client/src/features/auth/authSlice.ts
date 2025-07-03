@@ -13,7 +13,6 @@ interface AuthState {
   token: string | null;
 }
 
-// 🔐 Initialize state from localStorage safely
 let user: User | null = null;
 let token: string | null = null;
 

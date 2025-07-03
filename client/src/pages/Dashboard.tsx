@@ -120,9 +120,9 @@ const Dashboard = () => {
   }, [teams, tasks]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-gradient-to-br from-blue-50 via-white to-blue-100 ">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between bg-gradient-to-br from-blue-50 via-white to-blue-100 ">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Home</h1>
           <p className="text-gray-600">

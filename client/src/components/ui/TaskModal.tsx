@@ -24,7 +24,6 @@ export const TaskDetailModal: React.FC<TaskDetailModalProps> = ({ task, onClose 
     <Dialog open={!!task} onClose={onClose} className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen px-4">
     
-    {/* ✅ This replaces Dialog.Overlay */}
     <div className="fixed inset-0 backdrop-blur-sm bg-white/30 z-40" aria-hidden="true" />
 
     <div className="bg-white p-6 rounded-lg shadow-lg z-50 w-full max-w-md relative border-2 border-solid border-gray-200">

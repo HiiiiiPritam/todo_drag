@@ -47,8 +47,8 @@ const AnalyticsPage = () => {
       : 0;
 
   return (
-    <div className="p-6 space-y-10">
-      <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+    <div className="p-6 space-y-10 bg-gradient-to-br from-blue-50 via-white to-blue-100 ">
+      <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2 bg-gradient-to-br from-blue-50 via-white to-blue-100 ">
         📊 Analytics Dashboard
       </h1>
 

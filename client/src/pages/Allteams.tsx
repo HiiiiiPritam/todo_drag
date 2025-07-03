@@ -31,7 +31,7 @@ const AllTeams = () => {
 
     try {
       await dispatch(createTeam(payload)).unwrap();
-      await dispatch(fetchGlobalData()); // 🔁 Refetch all teams + users
+      await dispatch(fetchGlobalData()); 
       setModalOpen(false);
       setNewTeamName("");
       setNewTeamColor("#3b82f6");
@@ -49,9 +49,8 @@ const AllTeams = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex justify-between items-center">
+    <div className="p-6 space-y-6 ">
+      <div className="flex justify-between items-center bg-gradient-to-br from-blue-50 via-white to-blue-100 ">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-1">👥 All Teams</h1>
           <p className="text-sm text-gray-500">Browse and manage your project teams</p>
@@ -111,7 +110,6 @@ const AllTeams = () => {
       </div>
 
 
-      {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
