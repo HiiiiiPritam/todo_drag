@@ -19,9 +19,14 @@ const AllTeams = () => {
   const [newTeamName, setNewTeamName] = useState("");
   const [newTeamColor, setNewTeamColor] = useState("#3b82f6");
   const [selectedMembers, setSelectedMembers] = useState<string[]>([]);
+  const [error,setError] = useState<string | null>(null);
 
   const handleCreateTeam = async () => {
-    if (!newTeamName.trim() || !currentUser) return;
+    if (!newTeamName.trim() || !currentUser) {
+      toast.error("Please enter a team name");
+      setError("Please enter a team name");
+      return;
+    }
 
     const payload: Partial<Team> = {
       name: newTeamName,
@@ -124,6 +129,9 @@ const AllTeams = () => {
               placeholder="Team name"
               className="w-full border px-3 py-2 rounded text-sm"
             />
+            {
+              error && <p className="text-red-500">{error}</p>
+            }
 
             <div className="flex items-center gap-3">
               <label className="text-sm font-medium text-gray-700">

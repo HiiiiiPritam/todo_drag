@@ -3,6 +3,7 @@ import { useAppDispatch } from "../hooks/useStore";
 import { loginSuccess } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -11,18 +12,40 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const validateEmail = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleRegister = async () => {
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast.error("Invalid email format.");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters.");
+      return;
+    }
+
+    setLoading(true);
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
-        email,
-        password,
-        name
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/register`,
+        { email, password, name }
+      );
       dispatch(loginSuccess(res.data));
+      toast.success("Registration successful!");
       navigate("/dashboard");
     } catch (err) {
-      alert("Register failed");
+      toast.error("Registration failed.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,9 +84,12 @@ const Register = () => {
 
           <button
             onClick={handleRegister}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-150"
+            disabled={loading}
+            className={`w-full ${
+              loading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+            } text-white font-semibold py-2 rounded-md transition duration-150`}
           >
-            Register
+            {loading ? "Registering..." : "Register"}
           </button>
         </div>
 

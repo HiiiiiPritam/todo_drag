@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import type { User } from "../types/user";
 import Header from "./Header";
 import Sidebar from "./SideBar";
+import { Toaster } from "react-hot-toast";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -27,10 +28,23 @@ const Layout = ({
   const hideLayout = HIDE_LAYOUT_PATHS.includes(location.pathname);
 
   if (hideLayout) {
-    return <>{children}</>; // Just return the page directly (no sidebar/navbar)
+    return <>
+        <Toaster position="top-right" toastOptions={{ style: {
+      zIndex: 9999, 
+    },duration: 4000 }} 
+    
+    />
+    {children}</>; // Just return the page directly (no sidebar/navbar)
   }
   return (
+    <>
+    <Toaster position="top-right" toastOptions={{ style: {
+      zIndex: 9999, 
+    },duration: 4000 }} 
+    
+    />
     <div className="flex h-screen overflow-hidden">
+      
       <Sidebar
         activeView={activeView}
         setActiveView={setActiveView}
@@ -48,6 +62,8 @@ const Layout = ({
         <main className="flex-1 p-4 bg-gray-50">{children}</main>
       </div>
     </div>
+    </>
+    
   );
 };
 

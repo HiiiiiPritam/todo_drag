@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import HomePage from "./pages/HomePage";
+import { Toaster } from "react-hot-toast";
 
 // mock user & teams
 
@@ -33,6 +34,9 @@ function App() {
 
   return (
     <AppLoader >
+      <Toaster position="top-right" toastOptions={{ style: {
+      zIndex: 9999, 
+    },duration: 4000 }} />
     <Layout
       activeView={activeView}
       setActiveView={setActiveView}

@@ -3,6 +3,7 @@ import { useAppDispatch } from "../hooks/useStore";
 import { loginSuccess } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -10,19 +11,37 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
   const handleLogin = async () => {
+    if (!email || !password) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast.error("Please enter a valid email.");
+      return;
+    }
+
+    setLoading(true);
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
         email,
         password,
       });
-      console.log(res.data);
-      
+
       dispatch(loginSuccess(res.data));
+      toast.success("Login successful!");
       navigate("/dashboard");
     } catch (err) {
-      alert("Login failed");
+      toast.error("Login failed. Please check your credentials.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -53,9 +72,12 @@ const Login = () => {
 
           <button
             onClick={handleLogin}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-150"
+            disabled={loading}
+            className={`w-full ${
+              loading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+            } text-white font-semibold py-2 rounded-md transition duration-150`}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </div>
 

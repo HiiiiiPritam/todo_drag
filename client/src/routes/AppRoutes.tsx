@@ -12,11 +12,14 @@ import PrivateRoute from "../components/PrivateRoute";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import HomePage from "../pages/HomePage";
+import { Toaster } from "react-hot-toast";
 
 // import Pages from "../pages/Pages";
 // import NotFound from "../pages/NotFound";
 const AppRoutes = () => {
   return (
+    <>
+      
     <Routes>
       <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
       <Route path="/tasks" element={<PrivateRoute><Tasks /></PrivateRoute>} />
@@ -32,6 +35,8 @@ const AppRoutes = () => {
       <Route path="*" element={<Login />} />
       
     </Routes>
+    </>
+    
   );
 };
 

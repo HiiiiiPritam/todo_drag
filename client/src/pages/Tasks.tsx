@@ -22,6 +22,7 @@ import type { Assignee, Priority, Status, Task } from "../types/task";
 import { addTask, updateTaskStatus, updateTask, deleteTask,setTasks } from "../features/global/globalSlice";
 import { useAppDispatch, useAppSelector } from "../hooks/useStore";
 import { fetchGlobalData } from "../features/global/globalThunks";
+import toast from "react-hot-toast";
 
 
 const columns = [
@@ -128,7 +129,7 @@ export default function TasksPage() {
   // ✅ Add new task with better error handling
   const handleAddTask = async () => {
     if (!newTask.title.trim()) {
-      alert("Please enter a task title");
+      toast.error("Please enter a task title");
       return;
     }
 
@@ -170,7 +171,7 @@ export default function TasksPage() {
       });
     } catch (err) {
       console.error("Failed to add task", err);
-      alert("Failed to create task. Please try again.");
+      toast.error("Failed to create task. Please try again.");
     }
   };
 
@@ -207,6 +208,7 @@ export default function TasksPage() {
     setEditingTask(null);
     setNewTask(initialTask);
     setShowModal(false);
+    toast.success(editingTask ? "Task updated" : "Task created");
   };
 
   // Delete
