@@ -1,0 +1,22 @@
+teams-todo/
+├── server/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── index.js
+│   └── package.json
+└── client/
+    ├── public/
+    ├── src/
+      ├── app/                   # Redux store config
+      ├── components/            # UI Components (Navbar, TaskCard, KanbanColumn...)
+      ├── features/              # Redux slices (auth, tasks, teams, etc.)
+      ├── hooks/                 # Custom hooks
+      ├── pages/                 # Pages (Login, Dashboard, TeamPage, etc.)
+      ├── routes/                # AppRoutes.tsx
+      ├── utils/                 # Utility functions
+      ├── App.tsx
+      ├── main.tsx
+    ├── package.json
+    └── tailwind.config.js
