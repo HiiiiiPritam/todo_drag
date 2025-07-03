@@ -10,11 +10,14 @@ import {
   Globe,
   User,
   AlertCircle,
+  LogOut,
 } from "lucide-react";
 import clsx from "clsx";
 import { useAppDispatch, useAppSelector } from "../hooks/useStore";
 import { closeSidebar } from "../features/layout/layoutSlice";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../features/auth/authSlice";
+import toast from "react-hot-toast";
 
 
 interface SidebarProps {
@@ -43,6 +46,13 @@ const Sidebar = ({
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.layout.isSidebarOpen);
   const navigation = useNavigate();
+
+
+  const handleLogout = () => {
+    dispatch(logout());
+    toast.success("Logged out successfully");
+    navigation("/login");
+  };
 
   return (
     <>
@@ -99,6 +109,16 @@ const Sidebar = ({
               </button>
             ))}
           </nav>
+
+          <div className="p-4 border-t flex flex-col justify-end align-bottom">
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 text-red-600 hover:text-red-700 transition"
+        >
+          <LogOut className="w-5 h-5" />
+          <span className="text-sm font-semibold">Logout</span>
+        </button>
+      </div>
         </div>
       </div>
     </>
